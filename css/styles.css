@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+/*======REST======*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+/*======VARIABLES=======*/
+/*---COLOR---*/
+/*----FONT SIZE-----*/
+/*======DEFAULT=======*/
+h1,
+h2,
+h3 {
+  padding: 1em 0;
+}
+
+p {
+  padding: 1em 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+  line-height: 1.6;
+  transition: all 0.3s linear;
+}
+
+/*======CONTAINER=======*/
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/*======NAVBAR=======*/
+.hero {
+  display: grid;
+  color: white;
+  grid-template-rows: max-content 1fr;
+  grid-template-areas: "link-nav" "content";
+  min-height: 100vh;
+}
+
+.link-nav {
+  grid-area: link-nav;
+  display: grid;
+  justify-content: space-between;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  height: 5.625rem;
+  align-items: center;
+}
+
+.links-menu {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  z-index: 1;
+  transition: 0.4s;
+}
+.links-menu li {
+  cursor: pointer;
+}
+.links-menu li a {
+  text-decoration: none;
+  color: white;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+.links-menu li a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform-origin: left;
+  transform: scale(0, 1);
+  transition: transform ease-in-out 0.5s;
+}
+.links-menu li a:hover::after {
+  transform: scale(1, 1);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.haumberger {
+  position: relative;
+  width: 3.5rem;
+  height: 0.5rem;
+  background-color: white;
+  border-radius: 2rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: 0.3s;
+}
+.haumberger::before, .haumberger::after {
+  content: "";
+  height: 0.5rem;
+  width: 3.5rem;
+  right: 0;
+  background-color: white;
+  border-radius: 2rem;
+  position: absolute;
+  transition: 0.3s;
+}
+.haumberger::after {
+  top: 10px;
+}
+.haumberger::before {
+  top: -10px;
+}
+
+.toggle-menu {
+  position: absolute;
+  width: 25px;
+  right: 35px;
+  top: -364px;
+  height: 100%;
+  cursor: pointer;
+  display: none;
+  z-index: 3;
+  opacity: 0;
+}
+
+.haumberger,
+.toggle-menu {
+  display: none;
+}
+
+input:checked ~ .haumberger {
+  background-color: transparent;
+}
+
+input:checked ~ .haumberger::before {
+  top: 0;
+  transform: rotate(-45deg);
+  width: 3.5rem;
+}
+
+input:checked ~ .haumberger::after {
+  top: 0;
+  transform: rotate(45deg);
+  width: 3.5rem;
+}
+
+/*======HEADER=======*/
+.hero-main {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+  grid-gap: 2rem;
+  padding-bottom: 11.25rem;
+  align-items: center;
+}
+
+.hero-waves {
+  grid-area: content;
+  align-self: end;
+}
+
+.title {
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+}
+
+.sub-title {
+  font-size: 1.6rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.7rem;
+  letter-spacing: 0.2rem;
+  font-weight: 300;
+}
+
+.btn {
+  border: 0.1rem solid #126687;
+  padding: 2rem 1.5rem;
+  font-size: 1.5rem;
+  border-radius: 10rem;
+  color: white;
+  font-weight: 600;
+  transition: all 0.5s ease-in-out;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.btn:hover {
+  letter-spacing: 0.5rem;
+  color: #226258;
+}
+
+input:checked ~ .links-menu {
+  right: 0;
+}
+
+/*======MEDIA QUERY=======*/
+@media (max-width: 768px) {
+  /*-----NAVBAR------*/
+  .haumberger,
+.toggle-menu {
+    display: block;
+  }
+
+  .links-menu {
+    display: block;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    right: -300px;
+    top: 0;
+    background: #126687;
+    width: 300px;
+    height: 100%;
+    padding-top: 9rem;
+  }
+  .links-menu li {
+    width: 100%;
+    height: 4rem;
+  }
+  .links-menu li a {
+    padding: 30px 1rem;
+    font-size: 1rem;
+  }
+
+  /*-----HERO------*/
+  .hero-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content max-content;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    margin-top: 8rem;
+  }
+
+  .sub-title {
+    font-size: 1.3rem;
+  }
+
+  .img-content {
+    grid-row: 1/2;
+    margin-bottom: -16rem;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
